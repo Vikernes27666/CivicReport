@@ -1,8 +1,8 @@
 <?php
+session_start();  
+$mostrarModal = isset($_SESSION['mostrarModal']) && $_SESSION['mostrarModal'] === true;
+unset($_SESSION['mostrarModal']);  
 
-
-// Incluye el archivo de login
-include_once '../backend/controlador/ctl_login.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -12,13 +12,14 @@ include_once '../backend/controlador/ctl_login.php';
     <title>Formulario Responsivo</title>
     <script src="https://kit.fontawesome.com/3a7225da88.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../backend/css/login.css">
+    <link rel="stylesheet" href="../backend/css/registro.css">
 </head>
 <body>
     <div class="container">
         <div class="forms-container">
             <div class="signin-signup">
                 <!-- FORMULARIO DE INICIO DE SESIÓN -->
-                <form action="ctl_login.php" method="POST" class="sign-in-form">
+                <form action="../php/registro.php" method="POST" class="sign-in-form">
                     <h2 class="signin title">Iniciar sesión</h2>
 
                     <div class="input-field">
@@ -36,46 +37,52 @@ include_once '../backend/controlador/ctl_login.php';
                     <input type="submit" name="ctglog" value="Iniciar sesión" class="btn solid">
                 </form>
 
+                <?php 
+                    
+                    if (isset($_SESSION['error'])) { 
+                        echo "<div class='error-message'>" . $_SESSION['error'] . "</div>";
+                        unset($_SESSION['error']); 
+                    }
+                ?>
+
                 <!-- FORMULARIO DE REGISTRO -->
-                <form action="ctl_login.php" method="POST" class="sign-up-form">
+                <form action="../backend/controlador/registro.php" method="POST" class="sign-up-form">
                     <h2 class="signup title">Registrarse</h2>
 
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" name="nombre" placeholder="Nombre completo"
-                            value="<?php if(isset($_POST['nombre'])) echo htmlspecialchars($_POST['nombre']); ?>" required>
+                        <input type="text" name="nombreCompleto" id="nombreCompleto" placeholder="Nombre completo" required value="<?= $_SESSION['old']['nombreCompleto'] ?? ''; ?>">
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-id-card"></i>
-                        <input type="text" name="dni" placeholder="DNI"
-                            value="<?php if(isset($_POST['dni'])) echo htmlspecialchars($_POST['dni']); ?>" required>
+                        <input type="text" name="dni" id="dni" placeholder="DNI" required pattern="[0-9]{8}" value="<?= $_SESSION['old']['dni'] ?? ''; ?>">
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" name="correo" placeholder="Correo electrónico"
-                            value="<?php if(isset($_POST['correo'])) echo htmlspecialchars($_POST['correo']); ?>" required>
+                        <input type="email" name="correoElectronico" id="correoElectronico" placeholder="Correo electrónico" required value="<?= $_SESSION['old']['correoElectronico'] ?? ''; ?>">
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-phone"></i>
-                        <input type="tel" name="telefono" placeholder="Teléfono"
-                            value="<?php if(isset($_POST['telefono'])) echo htmlspecialchars($_POST['telefono']); ?>" required>
+                        <input type="tel" name="telefono" id="telefono" placeholder="Teléfono" required pattern="[0-9]{9}" value="<?= $_SESSION['old']['telefono'] ?? ''; ?>">
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" name="contrasena" placeholder="Contraseña" required>
+                        <input type="password" name="contrasena" id="contrasena" placeholder="Contraseña" required>
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" name="repetir_contrasena" placeholder="Repetir Contraseña" required>
+                        <input type="password" name="repetir_contrasena" id="repetir_contrasena" placeholder="Repetir Contraseña" required>
                     </div>
 
-                    <input type="submit" value="Registrarse" class="btn solid" name="registro">
+                    <button type="submit" class="btn solid">REGISTRAR</button>
                 </form>
+
+
             </div>
         </div>
 
@@ -101,5 +108,21 @@ include_once '../backend/controlador/ctl_login.php';
     </div>
 
     <script src="../backend/js/login.js"></script>
+    <script src="../backend/js/registro.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            <?php if ($mostrarModal): ?>
+                Swal.fire({
+                    title: "¡Registro Exitoso!",
+                    text: "Tu cuenta ha sido creada correctamente.",
+                    icon: "success",
+                    confirmButtonText: "Aceptar"
+                }).then(() => {
+                    window.location.href = "login.php"; 
+                });
+            <?php endif; ?>
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
