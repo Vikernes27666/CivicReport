@@ -14,6 +14,7 @@
     <div><a href="javascript:void(0);" onclick="showTab('inicio')" style="color: #333; text-decoration: none;">DenunciaYa</a></div>
     <div class="auth-buttons">
       <a href="login.php"><button class="btn">Iniciar sesión</button></a>
+      <a href="registro.php"><button class="btn">Registrar</button></a>
     </div>
   </header>
 
@@ -45,6 +46,7 @@
   </section>
 
   <script src="scripts.js"></script>
+  <script></script>
 </body>
 </html>
 
