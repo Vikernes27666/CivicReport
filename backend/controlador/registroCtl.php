@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($contrasena !== $repetirContrasena) {
         $_SESSION['error'] = "Las contraseñas no coinciden.";
-        header("Location: ../../frontend/login.php");
+        header("Location: ../../frontend/registro.php");
         exit();
     }
 
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (mysqli_num_rows($result_check) > 0) {
         $_SESSION['error'] = "Este DNI o correo electrónico ya está registrado.";
-        header("Location: ../../frontend/login.php");
+        header("Location: ../../frontend/registro.php");
         exit();
     }
 
@@ -36,11 +36,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (mysqli_query($conn, $sql_insert)) {
         $_SESSION['mostrarModal'] = true;  
         unset($_SESSION['old']); 
-        header("Location: ../../frontend/login.php");
+        header("Location: ../../frontend/registro.php");
         exit();
     } else {
         $_SESSION['error'] = "Error al registrar el usuario. Intenta nuevamente.";
-        header("Location: ../../frontend/login.php");
+        header("Location: ../../frontend/registro.php");
         exit();
     }
 }

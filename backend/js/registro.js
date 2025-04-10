@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
             valid = false;
         }
 
-        // Validar celular (solo números y longitud exacta de 9)
         if (!/^\d{9}$/.test(celular.value)) {
             mostrarMensajeError(celular, "El número de celular debe tener 9 dígitos.");
             valid = false;

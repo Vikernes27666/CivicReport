@@ -1,3 +1,4 @@
+
 <?php
 session_start();  
 $mostrarModal = isset($_SESSION['mostrarModal']) && $_SESSION['mostrarModal'] === true;
@@ -19,22 +20,25 @@ unset($_SESSION['mostrarModal']);
         <div class="forms-container">
             <div class="signin-signup">
                 <!-- FORMULARIO DE INICIO DE SESIÓN -->
-                <form action="../php/registro.php" method="POST" class="sign-in-form">
+                <form action="../backend/controlador/loginCtl.php" method="POST" class="sign-in-form">
                     <h2 class="signin title">Iniciar sesión</h2>
 
+                    <!-- Campo para el DNI -->
                     <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input type="text" name="usuario" placeholder="Usuario" 
-                            value="<?php if(isset($_POST['usuario'])) echo htmlspecialchars($_POST['usuario']); ?>" required>
+                        <i class="fas fa-id-card"></i> <!-- Ícono para DNI -->
+                        <input type="text" name="dni" placeholder="DNI" 
+                            value="<?php if(isset($_POST['dni'])) echo htmlspecialchars($_POST['dni']); ?>" required>
                     </div>
 
+                    <!-- Campo para la Contraseña -->
                     <div class="input-field">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" name="clave" placeholder="Contraseña"
-                            value="<?php if(isset($_POST['clave'])) echo htmlspecialchars($_POST['clave']); ?>" required>
+                        <i class="fas fa-lock"></i> <!-- Ícono para contraseña -->
+                        <input type="password" name="password" placeholder="Contraseña"
+                            value="<?php if(isset($_POST['password'])) echo htmlspecialchars($_POST['password']); ?>" required>
                     </div>
 
-                    <input type="submit" name="ctglog" value="Iniciar sesión" class="btn solid">
+                    <!-- Botón de enviar -->
+                    <button type="submit" class="btn solid">Iniciar Sesion</button>
                 </form>
 
                 <?php 
@@ -46,7 +50,7 @@ unset($_SESSION['mostrarModal']);
                 ?>
 
                 <!-- FORMULARIO DE REGISTRO -->
-                <form action="../backend/controlador/registro.php" method="POST" class="sign-up-form">
+                <form action="../backend/controlador/registroCtl.php" method="POST" class="sign-up-form">
                     <h2 class="signup title">Registrarse</h2>
 
                     <div class="input-field">
