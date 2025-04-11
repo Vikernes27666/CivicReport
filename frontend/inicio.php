@@ -7,6 +7,11 @@
     <title>Menu con subemenu - MagtimusPro</title>
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../backend/css/style.css">
+    <style>
+        .marginDerecha {
+            margin-right: 350px;
+        }
+    </style>
 </head>
 <body>
     
@@ -60,12 +65,18 @@
                                 <li><a href="#">Seguridad en el sistema</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">Contactos</a>
+                        <li class="marginDerecha"><a href="#">Contactos</a>
                             <ul>
                                 <li><a href="#">Soporte</a></li>
                                 <li><a href="#">FAQ (Preguntas frecuentes)</a></li>
                                 <li><a href="#">Redes sociales</a></li>
                             </ul>
+                        </li>
+                        <li><a href="login.php">Iniciar sesion</a>
+                            
+                        </li>
+                        <li><a href="registro.php">Registrar</a>
+                            
                         </li>
                     </ul>
                 </nav>
