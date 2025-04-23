@@ -37,11 +37,10 @@
                         <li><a href="#" id="selected"></a></li>
                         <li><a href="#">Servicios</a>
                             <ul>
-                                <li><a href="#">Registrar denuncia</a></li>
-                                <li><a href="#">Ver denuncias</a></li>
-                                <li><a href="#">Consultar estado</a></li>
-                                <li><a href="#">Denuncias anónimas</a></li>
-                                <li><a href="#">Mapa del crimen</a></li>
+                                <li><a href="reg_denucnia.php">Registrar denuncia</a></li>
+                                <li><a href="ver_denuncia.php">Ver denuncias</a></li>
+                                <li><a href="seg_denuncia.php">Consultar estado</a></li>
+                                <li><a href="mapa_denuncias.php">Mapa del crimen</a></li>
                             </ul>
                         </li>
                         <li><a href="#">Nosotros</a>
