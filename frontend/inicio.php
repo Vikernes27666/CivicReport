@@ -13,16 +13,13 @@ $mostrarModal = isset($_SESSION['errores']) && !empty($_SESSION['errores']);
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Iconos de Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../backend/css/inicio.css">
     <link rel="stylesheet" href="../backend/css/registro.css">
 </head>
 
 <body>
-    <!-- Verificar si hay errores y mostrarlos -->
 
-     <!-- Si hay un mensaje de éxito en la sesión, mostrarlo -->
      <?php if (isset($_SESSION['registro_exitoso'])): ?>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
@@ -33,7 +30,7 @@ $mostrarModal = isset($_SESSION['errores']) && !empty($_SESSION['errores']);
                 confirmButtonText: 'Aceptar'
             });
         </script>
-        <?php unset($_SESSION['registro_exitoso']); // Limpiar el mensaje después de mostrarlo ?>
+        <?php unset($_SESSION['registro_exitoso']); ?>
     <?php endif; ?>
 
     <div class="container mt-3">
@@ -47,7 +44,6 @@ $mostrarModal = isset($_SESSION['errores']) && !empty($_SESSION['errores']);
         </div>
     </div>
 
-    <!-- Menú Principal -->
     <nav class="navbar navbar-expand-lg navbar-dark mt-3">
         <div class="container header-nav">
             <ul class="navbar-nav me-auto">
@@ -96,8 +92,6 @@ $mostrarModal = isset($_SESSION['errores']) && !empty($_SESSION['errores']);
             </ul>
             <div>
                 <a class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">INICIAR SESIÓN</a>
-
-                <!-- Botón Registrarse, abre el modal de registro -->
                 <a class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#registerModal">REGISTRAR</a>
             </div>
         </div>
@@ -109,7 +103,7 @@ $mostrarModal = isset($_SESSION['errores']) && !empty($_SESSION['errores']);
     </div>
 
 
-    <!-- Modal para Registro -->
+    <!-- Modal dell registro.. avisan si modifican xd -->
     <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
@@ -124,9 +118,7 @@ $mostrarModal = isset($_SESSION['errores']) && !empty($_SESSION['errores']);
                                 <img src="../backend/img/logo_sistema.png" class="img-fluid" alt="Logo Sistema">
                             </div>
                             <div class="col-md-6">
-                                <!-- Formulario de Registro -->
                                 <form action="../backend/controlador/registroCtl.php" method="POST" id="formRegistro">
-                                    <!-- Nombres -->
                                     <div class="form-outline mb-4">
                                         <input type="text" name="nombres" class="form-control form-control-lg"
                                             placeholder="Ingrese sus nombres" required
@@ -134,7 +126,6 @@ $mostrarModal = isset($_SESSION['errores']) && !empty($_SESSION['errores']);
                                         <label class="form-label">Nombres</label>
                                     </div>
 
-                                    <!-- Apellidos -->
                                     <div class="form-outline mb-4">
                                         <input type="text" name="apellidos" class="form-control form-control-lg"
                                             placeholder="Ingrese sus apellidos" required
@@ -142,7 +133,6 @@ $mostrarModal = isset($_SESSION['errores']) && !empty($_SESSION['errores']);
                                         <label class="form-label">Apellidos</label>
                                     </div>
 
-                                    <!-- Tipo de Documento -->
                                     <div class="form-outline mb-4">
                                         <select name="tipo_documento" class="form-control form-control-lg" required>
                                             <option value="DNI" <?= isset($_SESSION['old']['tipo_documento']) && $_SESSION['old']['tipo_documento'] == 'DNI' ? 'selected' : '' ?>>DNI</option>
@@ -152,7 +142,6 @@ $mostrarModal = isset($_SESSION['errores']) && !empty($_SESSION['errores']);
                                         <label class="form-label">Tipo de Documento</label>
                                     </div>
 
-                                    <!-- Número de Documento -->
                                     <div class="form-outline mb-4">
                                         <input type="text" name="numero_documento" class="form-control form-control-lg"
                                             placeholder="Ingrese su número de documento" required
@@ -164,7 +153,6 @@ $mostrarModal = isset($_SESSION['errores']) && !empty($_SESSION['errores']);
                                         endif; ?>
                                     </div>
 
-                                    <!-- Teléfono -->
                                     <div class="form-outline mb-4">
                                         <input type="tel" name="telefono" class="form-control form-control-lg"
                                             placeholder="Ingrese su teléfono" required
@@ -172,7 +160,6 @@ $mostrarModal = isset($_SESSION['errores']) && !empty($_SESSION['errores']);
                                         <label class="form-label">Teléfono</label>
                                     </div>
 
-                                    <!-- Correo -->
                                     <div class="form-outline mb-4">
                                         <input type="email" name="correo" class="form-control form-control-lg"
                                             placeholder="Ingrese su correo electrónico" required
@@ -184,7 +171,6 @@ $mostrarModal = isset($_SESSION['errores']) && !empty($_SESSION['errores']);
                                         endif; ?>
                                     </div>
 
-                                    <!-- Contraseña -->
                                     <div class="form-outline mb-3">
                                         <input type="password" name="password" class="form-control form-control-lg"
                                             placeholder="Ingrese su contraseña" required />
@@ -196,7 +182,6 @@ $mostrarModal = isset($_SESSION['errores']) && !empty($_SESSION['errores']);
                                         <label class="form-label">Confirmar Contraseña</label>
                                     </div>
 
-                                    <!-- Botón de registro -->
                                     <div class="text-center text-lg-start mt-4 pt-2">
                                         <button type="submit" class="btn btn-primary btn-lg w-100"
                                             style="padding-left: 2.5rem; padding-right: 2.5rem;">Registrar</button>
@@ -212,7 +197,7 @@ $mostrarModal = isset($_SESSION['errores']) && !empty($_SESSION['errores']);
         </div>
     </div>
 
-    <!-- modal para login -->
+    <!-- modal para login.. igual aqui -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
@@ -224,13 +209,10 @@ $mostrarModal = isset($_SESSION['errores']) && !empty($_SESSION['errores']);
                     <div class="container-fluid h-custom">
                         <div class="row d-flex justify-content-center align-items-center">
                             <div class="col-md-6">
-                                <!-- Imagen -->
                                 <img src="" class="img-fluid" alt="Sample image">
                             </div>
                             <div class="col-md-6">
-                                <!-- Formulario de login -->
                                 <form action="../backend/controlador/loginCtl.php" method="POST" id="loginForm">
-                                    <!-- Entrar con redes sociales -->
                                     <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start mb-4">
                                         <p class="lead fw-normal mb-0 me-3">Entrar con</p>
                                         <button type="button" class="btn btn-facebook btn-social">
@@ -244,26 +226,22 @@ $mostrarModal = isset($_SESSION['errores']) && !empty($_SESSION['errores']);
                                         </button>
                                     </div>
 
-                                    <!-- Separador -->
                                     <div class="divider d-flex align-items-center my-4">
                                         <p class="text-center fw-bold mx-3 mb-0 text-muted">O</p>
                                     </div>
 
-                                    <!-- Correo -->
                                     <div class="form-outline mb-4">
                                         <input type="email" name="correo" class="form-control form-control-lg"
                                             placeholder="Ingrese su correo electrónico" required />
                                         <label class="form-label">Correo</label>
                                     </div>
 
-                                    <!-- Contraseña -->
                                     <div class="form-outline mb-3">
                                         <input type="password" name="password" class="form-control form-control-lg"
                                             placeholder="Ingrese su contraseña" required />
                                         <label class="form-label">Contraseña</label>
                                     </div>
 
-                                    <!-- Recordarme y olvidaste la contraseña -->
                                     <div class="d-flex justify-content-between align-items-center mb-4">
                                         <div class="form-check mb-0">
                                             <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
@@ -272,7 +250,6 @@ $mostrarModal = isset($_SESSION['errores']) && !empty($_SESSION['errores']);
                                         <a href="#" class="text-white">Olvidaste tu contraseña?</a>
                                     </div>
 
-                                    <!-- Botón de inicio de sesión -->
                                     <div class="text-center text-lg-start mt-4 pt-2">
                                         <button type="submit" class="btn btn-primary btn-lg w-100"
                                             style="padding-left: 2.5rem; padding-right: 2.5rem;">Iniciar Sesión</button>
@@ -306,7 +283,6 @@ $mostrarModal = isset($_SESSION['errores']) && !empty($_SESSION['errores']);
             <?php endif; ?>
         });
     </script>
-
 
 </body>
 
