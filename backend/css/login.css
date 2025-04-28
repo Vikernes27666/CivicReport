@@ -24,7 +24,7 @@ body, input{
     width: 2000px;
     height: 2000px;
     border-radius: 50%;
-    background: linear-gradient(-45deg, #4481eb, #04befe);
+    background: linear-gradient(-45deg, #0c364d, #0c364d);
     top: -10%;
     right: 48%;
     transform: translateY(-50%);
@@ -122,7 +122,7 @@ form.sign-up-form{
     outline: none;
     border-radius: 49px;
     cursor: pointer;
-    background-color: #5995fd;
+    background-color: #0c364d;
     color: #fff;
     text-transform: uppercase;
     font-weight: 600;
@@ -131,7 +131,7 @@ form.sign-up-form{
 }
 
 .btn:hover{
-    background-color: #4d8ae2;
+    background-color: #0c364d;
 }
 
 .social-text{
@@ -160,8 +160,8 @@ form.sign-up-form{
 }
 
 .social-media .social-icon:hover{
-    color: #4481eb;
-    border-color: #4481eb;
+    color: #0c364d;
+    border-color: #0c364d;
 }
 
 .image{
