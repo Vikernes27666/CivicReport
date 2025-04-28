@@ -14,6 +14,23 @@ Este proyecto busca fortalecer la transparencia pública y fomentar la participa
 
 
 ## 📚 Tecnologías principales 📚
+<p style="text-align: left;">
+  <a target="_blank" rel="noopener noreferrer nofollow" href="https://img.shields.io/badge/HTML-5-orange">
+    <img src="https://img.shields.io/badge/HTML-5-orange" alt="HTML" style="max-width: 100%;">
+  </a>
+  <a target="_blank" rel="noopener noreferrer nofollow" href="https://img.shields.io/badge/CSS-3-blue">
+    <img src="https://img.shields.io/badge/CSS-3-blue" alt="CSS" style="max-width: 100%;">
+  </a>
+  <a target="_blank" rel="noopener noreferrer nofollow" href="https://img.shields.io/badge/JavaScript-ES6-yellowgreen">
+    <img src="https://img.shields.io/badge/JavaScript-ES6-yellowgreen" alt="JavaScript" style="max-width: 100%;">
+  </a>
+  <a target="_blank" rel="noopener noreferrer nofollow" href="https://img.shields.io/badge/PHP-7.4-777bb3">
+    <img src="https://img.shields.io/badge/PHP-7.4-777bb3" alt="PHP" style="max-width: 100%;">
+  </a>
+  <a target="_blank" rel="noopener noreferrer nofollow" href="https://img.shields.io/badge/MySQL-8.0-4479A1">
+    <img src="https://img.shields.io/badge/MySQL-8.0-4479A1" alt="MySQL" style="max-width: 100%;">
+  </a>
+</p>
 
 <table>
   <thead>
