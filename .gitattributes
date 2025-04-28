@@ -1,0 +1,11 @@
+# Archivos PHP deben ser detectados como PHP
+*.php linguist-language=PHP
+
+# Archivos CSS como CSS
+*.css linguist-language=CSS
+
+# Archivos Markdown (README.md, USER_GUIDE.md) como Markdown
+*.md linguist-language=Markdown
+
+# Ignorar imágenes si las agregas luego (opcional)
+backend/css/img/** linguist-vendored
