@@ -1,39 +1,24 @@
-document.addEventListener("DOMContentLoaded", function () {
-    document.querySelector("form").addEventListener("submit", function (event) {
-        let condiciones = document.getElementById("condiciones");
-        let password = document.getElementById("contrasena").value;
-        let confirmPassword = document.getElementById("repetir_contrasena").value; 
-        let numeroDocumento = document.getElementById("dni"); 
-        let celular = document.getElementById("telefono"); 
-        let valid = true;
+//abrir modalesxd
 
-        if (password !== confirmPassword) {
-            mostrarMensajeError(document.getElementById("repetir_contrasena"), "Las contraseñas no coinciden.");
-            valid = false;
-        }
+document.addEventListener("DOMContentLoaded", function() {
+    const signInButton = document.getElementById('sign-in-btn');
+    const signUpButton = document.getElementById('sign-up-btn');
+    const authModal = new bootstrap.Modal(document.getElementById('authModal'));
+    const signInForm = document.querySelector('.sign-in-form');
+    const signUpForm = document.querySelector('.sign-up-form');
 
-        if (!/^\d{8,12}$/.test(numeroDocumento.value)) {
-            mostrarMensajeError(numeroDocumento, "El número de documento debe tener entre 8 y 12 dígitos numéricos.");
-            valid = false;
-        }
+    signInButton.addEventListener('click', function() {
+        authModal.show();
+        signInForm.style.display = 'block'; 
+        signUpForm.style.display = 'none'; 
+    });
 
-        if (!/^\d{9}$/.test(celular.value)) {
-            mostrarMensajeError(celular, "El número de celular debe tener 9 dígitos.");
-            valid = false;
-        }
-
-        if (!valid) {
-            event.preventDefault();
-        }
+    signUpButton.addEventListener('click', function() {
+        authModal.show();
+        signInForm.style.display = 'none'; 
+        signUpForm.style.display = 'block';
     });
 });
 
-function mostrarMensajeError(elemento, mensaje) {
-    let error = elemento.nextElementSibling;
-    if (!error || !error.classList.contains("text-danger")) {
-        error = document.createElement("small");
-        error.classList.add("text-danger");
-        elemento.parentNode.appendChild(error);
-    }
-    error.textContent = mensaje;
-}
+
+

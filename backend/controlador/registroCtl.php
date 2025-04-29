@@ -1,46 +1,57 @@
 <?php
 session_start();
-include('../bd/conexion.php'); 
+include '../bd/conexion.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $nombreCompleto = $_POST['nombreCompleto'];
-    $dni = $_POST['dni'];
-    $correoElectronico = $_POST['correoElectronico'];
-    $telefono = $_POST['telefono'];
-    $contrasena = $_POST['contrasena'];
-    $repetirContrasena = $_POST['repetir_contrasena'];
+    $nombres = mysqli_real_escape_string($conn, $_POST['nombres']);
+    $apellidos = mysqli_real_escape_string($conn, $_POST['apellidos']);
+    $tipoDocumento = mysqli_real_escape_string($conn, $_POST['tipo_documento']);
+    $numeroDocumento = mysqli_real_escape_string($conn, $_POST['numero_documento']);
+    $correo = mysqli_real_escape_string($conn, $_POST['correo']);
+    $telefono = mysqli_real_escape_string($conn, $_POST['telefono']);
+    $password = $_POST['password']; 
+    $confirmPassword = $_POST['confirm_password']; 
 
-    $_SESSION['old'] = $_POST;
+    $_SESSION['errores'] = [];
+    $_SESSION['old'] = $_POST; 
 
-    if ($contrasena !== $repetirContrasena) {
-        $_SESSION['error'] = "Las contraseñas no coinciden.";
-        header("Location: ../../frontend/registro.php");
-        exit();
+    if ($password !== $confirmPassword) {
+        $_SESSION['errores']['confirmPassword'] = "Las contraseñas no coinciden.";
     }
 
-    $contrasenaEncriptada = password_hash($contrasena, PASSWORD_DEFAULT);
-
-    $sql_check = "SELECT * FROM usuarios WHERE dni = '$dni' OR correoElectronico = '$correoElectronico'";
+    $sql_check = "SELECT * FROM usuarios WHERE numero_documento = '$numeroDocumento' OR correo = '$correo'";
     $result_check = mysqli_query($conn, $sql_check);
 
-    if (mysqli_num_rows($result_check) > 0) {
-        $_SESSION['error'] = "Este DNI o correo electrónico ya está registrado.";
-        header("Location: ../../frontend/registro.php");
+    while ($row = mysqli_fetch_assoc($result_check)) {
+        if ($row['numero_documento'] == $numeroDocumento) {
+            $_SESSION['errores']['numeroDocumento'] = "Este número de documento ya está registrado.";
+        }
+        if ($row['correo'] == $correo) {
+            $_SESSION['errores']['email'] = "Este correo ya está registrado.";
+        }
+    }
+
+    if (!empty($_SESSION['errores'])) {
+    
+        header("Location: ../../frontend/inicio.php");
         exit();
     }
 
-    $sql_insert = "INSERT INTO usuarios (nombreCompleto, dni, correoElectronico, telefono, contrasena) 
-                   VALUES ('$nombreCompleto', '$dni', '$correoElectronico', '$telefono', '$contrasenaEncriptada')";
+    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+
+    $fechaRegistro = date("Y-m-d H:i:s");
+    $sql_insert = "INSERT INTO usuarios (nombres, apellidos, tipo_documento, numero_documento, correo, telefono, password, fecha_registro) 
+                   VALUES ('$nombres', '$apellidos', '$tipoDocumento', '$numeroDocumento', '$correo', '$telefono', '$passwordHash', '$fechaRegistro')";
 
     if (mysqli_query($conn, $sql_insert)) {
-        $_SESSION['mostrarModal'] = true;  
+        $_SESSION['registro_exitoso'] = "¡Registro exitoso! Tu cuenta ha sido creada correctamente."; 
         unset($_SESSION['old']); 
-        header("Location: ../../frontend/registro.php");
+        header("Location: ../../frontend/inicio.php");
         exit();
     } else {
-        $_SESSION['error'] = "Error al registrar el usuario. Intenta nuevamente.";
-        header("Location: ../../frontend/registro.php");
+        $_SESSION['error'] = "Error al registrar el usuario.";
+        header("Location: ../../frontend/inicio.php");
         exit();
     }
 }
