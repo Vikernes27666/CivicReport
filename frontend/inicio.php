@@ -54,7 +54,7 @@ $mostrarModal = isset($_SESSION['errores']) && !empty($_SESSION['errores']);
                         <li><a class="dropdown-item" href="#">Registrar Denuncia</a></li>
                         <li><a class="dropdown-item" href="#">Ver Denuncias</a></li>
                         <li><a class="dropdown-item" href="#">Consultar Estado</a></li>
-                        <li><a class="dropdown-item" href="#">Mapa del Crimen</a></li>
+                        <li><a class="dropdown-item" href="mapa_denuncias.php">Mapa del Crimen</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
