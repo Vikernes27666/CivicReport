@@ -1,6 +1,10 @@
 <?php session_start();
-$mostrarModal = isset($_SESSION['errores']) && !empty($_SESSION['errores']);
-$mostrarLoginModal = isset($_SESSION['error']) && !empty($_SESSION['error']);
+if (!isset($_SESSION['nombre_usuario'])) {
+    header('Location: login.php');
+    exit();
+}
+
+$nombre_usuario = $_SESSION['nombre_usuario'];
 ?>
 
 <!DOCTYPE html>
@@ -20,20 +24,6 @@ $mostrarLoginModal = isset($_SESSION['error']) && !empty($_SESSION['error']);
 </head>
 
 <body>
-
-    <?php if (isset($_SESSION['registro_exitoso'])): ?>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script>
-            Swal.fire({
-                title: '¡Registro Exitoso!',
-                text: '<?php echo $_SESSION['registro_exitoso']; ?>',
-                icon: 'success',
-                confirmButtonText: 'Aceptar'
-            });
-        </script>
-        <?php unset($_SESSION['registro_exitoso']); ?>
-    <?php endif; ?>
-
     <div class="container mt-3">
         <div class="row align-items-center">
             <div class="col-md-6">
@@ -91,9 +81,14 @@ $mostrarLoginModal = isset($_SESSION['error']) && !empty($_SESSION['error']);
                     </ul>
                 </li>
             </ul>
-            <div>
-                <a class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">INICIAR SESIÓN</a>
-                <a class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#registerModal">REGISTRAR</a>
+            <div class="dropdown">
+                <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-user"></i>
+                    <?php echo htmlspecialchars($nombre_usuario); ?>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="../backend/controlador/logout.php">Cerrar sesión</a></li>
+                </ul>
             </div>
         </div>
     </nav>
