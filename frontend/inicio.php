@@ -214,7 +214,6 @@ $mostrarLoginModal = isset($_SESSION['error']) && !empty($_SESSION['error']);
                             </div>
                             <div class="col-md-6">
                                 <form action="../backend/controlador/loginCtl.php" method="POST" id="loginForm">
-                                    <!-- Mensaje de error (si existe) -->
                                     <?php if (isset($_SESSION['error'])): ?>
                                         <div class="alert alert-danger">
                                             <?php echo $_SESSION['error']; ?>
@@ -222,19 +221,16 @@ $mostrarLoginModal = isset($_SESSION['error']) && !empty($_SESSION['error']);
                                         <?php unset($_SESSION['error']); ?>
                                     <?php endif; ?>
 
-                                    <!-- Correo -->
                                     <div class="form-outline mb-4">
                                         <input type="email" name="correo" class="form-control form-control-lg" placeholder="Ingrese su correo electrónico" required />
                                         <label class="form-label">Correo</label>
                                     </div>
 
-                                    <!-- Contraseña -->
                                     <div class="form-outline mb-3">
                                         <input type="password" name="password" class="form-control form-control-lg" placeholder="Ingrese su contraseña" required />
                                         <label class="form-label">Contraseña</label>
                                     </div>
 
-                                    <!-- Recordarme y olvidaste la contraseña -->
                                     <div class="d-flex justify-content-between align-items-center mb-4">
                                         <div class="form-check mb-0">
                                             <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
@@ -243,7 +239,6 @@ $mostrarLoginModal = isset($_SESSION['error']) && !empty($_SESSION['error']);
                                         <a href="#" class="text-white">Olvidaste tu contraseña?</a>
                                     </div>
 
-                                    <!-- Botón de inicio de sesión -->
                                     <div class="text-center text-lg-start mt-4 pt-2">
                                         <button type="submit" class="btn btn-primary btn-lg w-100" style="padding-left: 2.5rem; padding-right: 2.5rem;">Iniciar Sesión</button>
                                         <p class="small fw-bold mt-2 pt-1 mb-0">No tienes una cuenta? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" class="link-danger">Registrar</a></p>
@@ -269,7 +264,6 @@ $mostrarLoginModal = isset($_SESSION['error']) && !empty($_SESSION['error']);
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Verificar si se debe mostrar el modal de registro
             <?php if (isset($mostrarModal) && $mostrarModal): ?>
                 var registerModal = new bootstrap.Modal(document.getElementById('registerModal'), {
                     keyboard: false
@@ -277,7 +271,6 @@ $mostrarLoginModal = isset($_SESSION['error']) && !empty($_SESSION['error']);
                 registerModal.show();
             <?php endif; ?>
 
-            // Verificar si se debe mostrar el modal de login
             <?php if (isset($mostrarLoginModal) && $mostrarLoginModal): ?>
                 var loginModal = new bootstrap.Modal(document.getElementById('loginModal'), {
                     keyboard: false

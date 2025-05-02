@@ -1,0 +1,122 @@
+/* Reset y base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2c3e50;
+    background-color: #f9f9f9;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Header mejorado con layout flexible */
+  header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  header h1 {
+    font-size: 1.8rem;
+    color: #333;
+    margin: 0;
+  }
+  
+  /* Estilo del buscador */
+  header input[type="search"] {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 200px;
+    transition: border-color 0.2s;
+  }
+  
+  header input[type="search"]:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Mapa */
+  main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+  }
+  
+  #map {
+    width: 98vw; /* más ancho */
+    max-width: 1800px; /* más largo en pantallas grandes */
+    height: calc(100vh - 220px); /* altura adaptable */
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: #888;
+    border-top: 1px solid #e0e0e0;
+    margin-top: auto;
+  }
+  
+  /* JSON crudo (debug) */
+  pre#rawData {
+    background: #f0f0f0;
+    color: #444;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem auto;
+    width: 95%;
+    max-width: 1500px;
+    font-size: 0.85rem;
+    overflow: auto;
+  }
+  
+  /* Responsive ajustes */
+  @media (max-width: 768px) {
+    header h1 {
+      font-size: 1.4rem;
+    }
+  
+    #map {
+      width: 98vw;
+      height: calc(100vh - 200px);
+    }
+  
+    header input[type="search"] {
+      width: 150px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    #map {
+      width: 98vw;
+      height: calc(100vh - 180px);
+    }
+  
+    pre#rawData {
+      font-size: 0.75rem;
+    }
+  
+    header input[type="search"] {
+      width: 120px;
+    }
+  }
+  
