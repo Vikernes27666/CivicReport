@@ -44,9 +44,9 @@ include '../backend/bd/conexion.php';
             </div>
         </div>
 
-        <form action="guardar_denuncia.php" method="POST" enctype="multipart/form-data" id="denunciaForm">
+        <form action="../backend/controlador/Ctl_regDenuncias.php" method="POST" enctype="multipart/form-data" id="denunciaForm">
 
-            <!-- este es el apartado 1 -->
+            <!-- ESTE ES EL APARTDO DE "GENERALES" -->
             <div class="card p-4 step active" id="step1">
                 <h5>Datos Generales</h5>
                 <div class="mb-3">
@@ -66,7 +66,7 @@ include '../backend/bd/conexion.php';
                     $sql = "SELECT id_tipo_denunciante, tipo FROM tipo_denunciantes";
                     $result = $conn->query($sql);
                     ?>
-                    <select class="form-select" name="tipo_denunciante" id="tipo_denunciante" required>
+                    <select class="form-select" name="id_denunciante" id="tipo_denunciante" required>
                         <option value="">Seleccione...</option>
                         <?php while ($row = $result->fetch_assoc()): ?>
                             <option value="<?= $row['id_tipo_denunciante'] ?>">
@@ -84,7 +84,7 @@ include '../backend/bd/conexion.php';
                 </div>
             </div>
 
-            <!-- este es el apartado 2 -->
+            <!-- ESTE ES EL APARTADO DE "HECHOS" -->
             <div class="card p-4 step" id="step2">
                 <h5>Datos del Hecho</h5>
                 <div class="mb-3">
@@ -124,7 +124,7 @@ include '../backend/bd/conexion.php';
                 </div>
             </div>
 
-            <!-- este es el apartado 3 -->
+            <!-- ESTES ES EL APARTADO DE "UBICAICONE" -->
             <div class="card p-4 step" id="step3">
                 <h5>Ubicación del Hecho</h5>
                 <div class="row mb-3">
@@ -147,12 +147,12 @@ include '../backend/bd/conexion.php';
                 </div>
                 <div class="mb-3">
                     <label for="latitud" class="form-label">Latitud</label>
-                    <input type="text" class="form-control" name="latitud" id="latitud" placeholder="Latitud" readonly>
+                    <input type="text" class="form-control" name="latitud" id="latitud" placeholder="Latitud">
                 </div>
 
                 <div class="mb-3">
                     <label for="longitud" class="form-label">Longitud</label>
-                    <input type="text" class="form-control" name="longitud" id="longitud" placeholder="Longitud" readonly>
+                    <input type="text" class="form-control" name="longitud" id="longitud" placeholder="Longitud">
                 </div>
 
                 <div class="mb-4">
@@ -167,15 +167,16 @@ include '../backend/bd/conexion.php';
                 </div>
             </div>
 
-            <!-- este es el apartado 4 -->
+            <!-- ESTE ES EL APARTADO DE LAS "EVIDENCIAS -->
             <div class="card p-4 step" id="step4">
                 <h5>Subir Evidencias</h5>
                 <div class="mb-3">
-                    <label for="evidencias">Adjuntar archivos</label>
-                    <input type="file" class="form-control" name="evidencias[]" multiple>
+                    <label for="evidencias" class="form-label">Adjuntar archivos (imágenes, PDFs, videos...)</label>
+                    <input type="file" class="form-control" name="evidencias[]" id="evidencias" multiple accept=".jpg,.jpeg,.png,.pdf,.mp4,.mov,.avi">
+                    <div class="form-text">Puedes subir varios archivos (imágenes, PDFs, videos).</div>
                 </div>
-                <div class="form-footer">
-                    <button type="button" class="btn btn-secondary btn-sm" onclick="prevStep(4)">Anterior</button>
+                <div class="form-footer text-center">
+                    <button type="button" class="btn btn-secondary btn-sm me-2" onclick="prevStep(4)">Anterior</button>
                     <button type="submit" class="btn btn-success btn-sm">Enviar</button>
                 </div>
             </div>
@@ -184,7 +185,7 @@ include '../backend/bd/conexion.php';
     </div>
 
     <script>
-        
+
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
