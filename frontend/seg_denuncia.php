@@ -3,8 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <title>Consultar Denuncia</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../backend/css/inicio.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 </head>
 <body>
+
+ <!-- navbar_usuario.php -->
+ <?php include 'navbar_usuario.php'; ?>
+    <!-- navbar_usuario.php -->
 
   <h1>Consultar Estado de Denuncia</h1>
 
@@ -40,6 +47,8 @@
       document.getElementById("resultado").style.display = "block";
     });
   </script>
+
+
 
 </body>
 </html>

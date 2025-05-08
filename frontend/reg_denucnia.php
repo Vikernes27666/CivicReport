@@ -88,7 +88,7 @@ include '../backend/bd/conexion.php';
             <div class="card p-4 step" id="step2">
                 <h5>Datos del Hecho</h5>
                 <div class="mb-3">
-                    <label for="titulo">Título</label>
+                    <label for="titulo">Asunto</label>
                     <input type="text" class="form-control" name="titulo" required>
                 </div>
                 <div class="mb-3">

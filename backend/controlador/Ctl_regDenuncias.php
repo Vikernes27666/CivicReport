@@ -61,7 +61,12 @@ if ($stmt->execute()) {
         if (!empty($tmp_name)) {
             $nombre_archivo = basename($_FILES['evidencias']['name'][$key]);
             $tipo_archivo = $_FILES['evidencias']['type'][$key];
-            $nombre_final = uniqid() . "_" . $nombre_archivo;
+
+            //limpiando para que las imegesns no tengan caracteres especiales ni espacio en sus nombres al momento de subirlo
+            $nombre_archivo_limpio = preg_replace('/[^a-zA-Z0-9\._-]/', '_', pathinfo($nombre_archivo, PATHINFO_FILENAME));
+            $extension = pathinfo($nombre_archivo, PATHINFO_EXTENSION);
+
+            $nombre_final = uniqid() . "_" . $nombre_archivo_limpio . "." . $extension;
             $ruta_relativa = "uploads/" . $nombre_final;
             $ruta_absoluta = $upload_dir . $nombre_final;
 
