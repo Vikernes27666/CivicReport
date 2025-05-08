@@ -9,9 +9,9 @@
 </head>
 <body>
 
- <!-- navbar_usuario.php -->
- <?php include 'navbar_usuario.php'; ?>
-    <!-- navbar_usuario.php -->
+<!-- navbar_usuario.php -->
+<?php include 'templates/templates/navbar.php'; ?>
+<!-- navbar_usuario.php -->
 
   <h1>Consultar Estado de Denuncia</h1>
 
@@ -27,6 +27,10 @@
     <p><strong>Último comentario:</strong> <span id="comentario"></span></p>
     <p><strong>Fecha de actualización:</strong> <span id="fecha"></span></p>
   </div>
+
+  <!-- navbar_usuario.php -->
+  <?php include 'templates/footer.php'; ?>
+  <!-- navbar_usuario.php -->
 
   <script>
     // Simulación de backend con datos estáticos de ejemplo

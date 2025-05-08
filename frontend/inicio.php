@@ -1,4 +1,8 @@
-<?php session_start();
+<?php 
+session_start();
+session_unset();
+session_destroy();
+
 $mostrarModal = isset($_SESSION['errores']) && !empty($_SESSION['errores']);
 $mostrarLoginModal = isset($_SESSION['error']) && !empty($_SESSION['error']);
 ?>
@@ -17,6 +21,7 @@ $mostrarLoginModal = isset($_SESSION['error']) && !empty($_SESSION['error']);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../backend/css/inicio.css">
     <link rel="stylesheet" href="../backend/css/registro.css">
+    <link rel="stylesheet" href="../backend/css/principal.css">
 </head>
 
 <body>
@@ -37,13 +42,8 @@ $mostrarLoginModal = isset($_SESSION['error']) && !empty($_SESSION['error']);
     
 
     <!-- navbar.php -->
-    <?php include 'navbar.php'; ?>
+    <?php include 'templates/navbar.php'; ?>
     <!-- navbar.php -->
-
-    <div class="container mt-4">
-        <h2>Página principal</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
-    </div>
 
 
     <!-- Modal dell registro.. avisan si modifican xd -->
@@ -58,7 +58,7 @@ $mostrarLoginModal = isset($_SESSION['error']) && !empty($_SESSION['error']);
                     <div class="container-fluid h-custom">
                         <div class="row d-flex justify-content-center align-items-center">
                             <div class="col-md-6">
-                                <img src="../backend/img/logo_sistema.png" class="img-fluid" alt="Logo Sistema">
+                                <img src="../backend/img/Registro.png" class="img-fluid" alt="Logo Sistema">
                             </div>
                             <div class="col-md-6">
                                 <form action="../backend/controlador/registroCtl.php" method="POST" id="formRegistro">
@@ -152,7 +152,7 @@ $mostrarLoginModal = isset($_SESSION['error']) && !empty($_SESSION['error']);
                     <div class="container-fluid h-custom">
                         <div class="row d-flex justify-content-center align-items-center">
                             <div class="col-md-6">
-                                <img src="" class="img-fluid" alt="Sample image">
+                                <img src="../backend/img/login.png" class="img-fluid" alt="Sample image">
                             </div>
                             <div class="col-md-6">
                                 <form action="../backend/controlador/loginCtl.php" method="POST" id="loginForm">
@@ -194,7 +194,13 @@ $mostrarLoginModal = isset($_SESSION['error']) && !empty($_SESSION['error']);
         </div>
     </div>
 
-
+    <!-- principal.php -->
+    <?php include 'principal.php'; ?>
+    <!-- principal.php -->
+    
+    <!-- navbar_usuario.php -->
+    <?php include 'templates/footer.php'; ?>
+    <!-- navbar_usuario.php -->
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

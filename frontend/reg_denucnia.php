@@ -1,6 +1,16 @@
 <?php
+session_start(); // Aquí sí
+if (!isset($_SESSION['nombre_usuario'])) {
+    header('Location: inicio.php');
+    exit();
+}
+$nombre_usuario = $_SESSION['nombre_usuario'];
+?>
+
+<?php
 include '../backend/bd/conexion.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -10,13 +20,14 @@ include '../backend/bd/conexion.php';
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../backend/css/inicio.css">
+    <link rel="stylesheet" href="../backend/css/footer.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../backend/css/reg_denuncia.css">
 </head>
 
 <body>
     <!-- navbar_usuario.php -->
-    <?php include 'navbar_usuario.php'; ?>
+    <?php include 'templates/navbar.php'; ?>
     <!-- navbar_usuario.php -->
 
     <div class="container mt-4 ">
@@ -183,6 +194,10 @@ include '../backend/bd/conexion.php';
 
         </form>
     </div>
+
+    <!-- navbar_usuario.php -->
+    <?php include 'templates/footer.php'; ?>
+    <!-- navbar_usuario.php -->
 
     <script>
 

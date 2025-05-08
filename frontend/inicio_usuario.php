@@ -1,3 +1,13 @@
+<?php
+session_start();
+if (!isset($_SESSION['nombre_usuario'])) {
+    header('Location: inicio.php');
+    exit();
+} 
+$nombre_usuario = $_SESSION['nombre_usuario'];
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -9,12 +19,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../backend/css/inicio.css">
-    <link rel="stylesheet" href="../backend/css/registro.css">
+    <link rel="stylesheet" href="../backend/css/footer.css">
+    <link rel="stylesheet" href="../backend/css/registrro.css">
+    <link rel="stylesheet" href="../backend/css/principal.css">
+
 </head>
 
 <body>
+
     <!-- navbar_usuario.php -->
-    <?php include 'navbar_usuario.php'; ?>
+    <?php include 'templates/navbar.php'; ?>
     <!-- navbar_usuario.php -->
 
     <?php
@@ -35,10 +49,13 @@
     }
     ?>
 
-    <div class="container mt-4">
-        <h2>Página principal</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
-    </div>
+    <!-- principal.php -->
+    <?php include 'principal.php'; ?>
+    <!-- principal.php -->
+
+    <!-- navbar_usuario.php -->
+    <?php include 'templates/footer.php'; ?>
+    <!-- navbar_usuario.php -->
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

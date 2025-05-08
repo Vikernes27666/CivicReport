@@ -1,4 +1,13 @@
 <?php
+session_start(); // Aquí sí
+if (!isset($_SESSION['nombre_usuario'])) {
+    header('Location: inicio.php');
+    exit();
+}
+$nombre_usuario = $_SESSION['nombre_usuario'];
+?>
+
+<?php
 include '../backend/bd/conexion.php';
 $sql = "SELECT d.id_denuncia, d.titulo, d.descripcion, d.categoria, d.fecha_hechos,
                d.departamento, d.provincia, d.distrito, d.direccion_referencia, d.codigo_seguimiento,
@@ -28,7 +37,7 @@ $result = $conn->query($sql);
 
 <body>
     <!-- navbar_usuario.php -->
-    <?php include 'navbar_usuario.php'; ?>
+    <?php include 'templates/navbar.php'; ?>
     <!-- navbar_usuario.php -->
 
     <div class="container my-5">
@@ -155,9 +164,10 @@ $result = $conn->query($sql);
             <?php endwhile; ?>
         </div>
     </div>
-    <footer class="text-center py-4 bg-light">
-        <p>&copy; 2025 Sistema de Denuncias Públicas</p>
-    </footer>
+
+    <!-- navbar_usuario.php -->
+    <?php include 'templates/footer.php'; ?>
+    <!-- navbar_usuario.php -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

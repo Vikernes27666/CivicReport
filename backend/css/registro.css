@@ -1,7 +1,44 @@
+/* Limita la altura del modal y permite scroll interno */
+.modal-body {
+    max-height: 80vh;
+    overflow-y: auto;
+}
 
-.error-message {
+/* Mejora el layout interno horizontal en pantallas ≥ 768px */
+@media (min-width: 768px) {
+    .modal-dialog {
+        max-width: 900px; /* Puedes ajustar este valor si quieres más ancho */
+    }
+
+    .modal-body .row {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    /* Ajuste de imagen */
+    .modal-body .col-md-6:first-child img {
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    /* Espaciado para los inputs */
+    .modal-body form .form-outline {
+        margin-bottom: 1rem;
+    }
+
+    /* Opcional: hacer inputs un poco más compactos */
+    .form-control-lg {
+        padding: 0.6rem 1rem;
+        font-size: 1rem;
+    }
+}
+
+/* Mejora visibilidad de errores */
+.error-message,
+.form-outline p {
     color: red;
-    font-size: 16px;
-    margin-bottom: 20px;
-    text-align: center;
+    font-size: 14px;
+    margin: 0.2rem 0 0.5rem;
+    text-align: left;
 }
