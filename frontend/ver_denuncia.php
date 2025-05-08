@@ -1,10 +1,11 @@
 <?php
 include '../backend/bd/conexion.php';
-$sql = "SELECT d.id_denuncia, d.titulo, d.descripcion, d.categoria, d.fecha_hechos, 
-        d.departamento, d.provincia, d.distrito, d.direccion_referencia, 
-        d.codigo_seguimiento, e.archivo_url, d.fecha_creacion
+$sql = "SELECT d.id_denuncia, d.titulo, d.descripcion, d.categoria, d.fecha_hechos,
+               d.departamento, d.provincia, d.distrito, d.direccion_referencia, d.codigo_seguimiento,
+               d.es_anonimo, de.nombre AS nombre_denunciante, e.archivo_url
         FROM denuncias d
         LEFT JOIN evidencias e ON d.id_denuncia = e.id_denuncia
+        LEFT JOIN denunciantes de ON d.id_denunciante = de.id_denunciante
         WHERE d.estado = 'Aprobada'
         GROUP BY d.id_denuncia
         ORDER BY d.fecha_creacion DESC";
@@ -57,6 +58,7 @@ $result = $conn->query($sql);
                 <div class="modal fade" id="modal<?= $row['id_denuncia'] ?>" tabindex="-1" aria-labelledby="modalLabel<?= $row['id_denuncia'] ?>" aria-hidden="true">
                     <div class="modal-dialog modal-lg modal-dialog-centered">
                         <div class="modal-content border border-dark" style="background-color: #f8f9fa;">
+
                             <div class="modal-header bg-light border-bottom border-dark d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center">
                                     <img src="../backend/img/logo_sistema.png" alt="Logo" width="100" class="me-3">
@@ -68,6 +70,18 @@ $result = $conn->query($sql);
 
                                 <div class="text-end mb-3 text-muted small">
                                     <strong>Código de Seguimiento:</strong> <?= htmlspecialchars($row['codigo_seguimiento']) ?>
+                                </div>
+
+                                <div class="bg-secondary text-white px-3 py-2 mb-3"><strong>DATOS DEL DENUNCIANTE</strong></div>
+                                <div class="row mb-3">
+                                    <div class="col-md-12">
+                                        <strong>Nombre:</strong><br>
+                                        <?php if ($row['es_anonimo'] === '1') : ?>
+                                            Anónimo
+                                        <?php else : ?>
+                                            <?= htmlspecialchars($row['nombre_denunciante']) ?>
+                                        <?php endif; ?>
+                                    </div>
                                 </div>
 
                                 <div class="bg-secondary text-white px-3 py-2 mb-3"><strong>DATOS GENERALES</strong></div>
