@@ -1,128 +1,462 @@
-/* CAMBIAR O MEJORAR ESTO */
+/* Estilo base y reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
 
-
-/* GENERAL */
 body {
-    font-family: 'Segoe UI', Roboto, sans-serif;
-    background-color: #f8f9fa;
-    color: #212529;
+    background-color: #fff;
+    color: #333;
+    line-height: 1.6;
+    font-size: 16px;
 }
 
-h1, h2, h3, h4 {
-    color: #343a40;
-}
-
-/* TÍTULO PRINCIPAL */
-.display-5 {
-    font-weight: 700;
-    line-height: 1.3;
-}
-
-/* BANNER */
-.banner-img {
-    width: 100%;
-    height: auto;
-    max-height: 280px; /* Tamaño contenido y profesional */
-    object-fit: cover;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-}
-
-/* BOTÓN PRINCIPAL */
-.btn-danger.btn-lg {
-    padding: 0.8rem 2rem;
-    font-size: 1.1rem;
-    border-radius: 50px;
-    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
-    transition: all 0.3s ease-in-out;
-}
-.btn-danger.btn-lg:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(220, 53, 69, 0.4);
-}
-
-/* CARRUSEL */
-.carousel-item img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
-}
-
-/* USUARIOS */
-.bg-light.py-4 {
-    background-color: #ffffff !important;
-    border-left: 5px solid #dc3545;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
-}
-
-/* TARJETA DE DENUNCIAS */
-.card.shadow-sm {
-    border-radius: 12px;
+/* HERO */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 600px; /* Asegurar una altura mínima */
+    background: linear-gradient(45deg, #345676, #151B23);
+    color: white;
+    padding: 5%;
+    position: relative;
     overflow: hidden;
 }
+
+.hero-texto {
+    flex: 1;
+    padding-right: 20px; /* Espacio entre texto e imagen en pantallas grandes */
+}
+
+.hero-texto h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-texto span {
+    color: #D3C7BB;
+}
+
+.hero-texto p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+}
+
+.hero-texto .btn-principal {
+    background-color: #D3C7BB;
+    color: #151B23;
+    padding: 12px 30px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.hero-texto .btn-principal:hover {
+    background-color: #929292;
+}
+
+.hero-img {
+    flex: 1;
+    display: flex;
+    justify-content: center; /* Centrar la imagen */
+}
+
+.hero-img img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: slideIn 1.5s ease-out;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+/* VENTAJAS - Mejoras con imágenes */
+.ventajas {
+    background-color: #f5f5f5;
+    padding: 50px 5%;
+    text-align: center;
+}
+
+.ventajas h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #345676;
+}
+
+.ventaja-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background: #fff;
+    padding: 25px; /* Reduje un poco el padding en general */
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
 .card img {
-    height: 100%;
-    object-fit: cover;
+    max-width: 70px; /* Ligeramente más pequeño en general */
+    height: auto;
+    margin-bottom: 15px;
 }
-.card-body {
-    padding: 1rem 1.25rem;
+
+.card h3 {
+    font-size: 1.8rem; /* Ligeramente más pequeño en general */
+    margin-bottom: 10px;
+    color: #151B23;
 }
-.card-title {
+
+.card p {
     font-size: 1.1rem;
-    font-weight: 600;
-}
-.card-text {
-    font-size: 0.95rem;
-    color: #6c757d;
+    color: #555;
+    line-height: 1.6;
 }
 
-/* MAPA */
-.mapa-ubicacion iframe {
-    width: 100%;
-    height: 280px;
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+
+/* DENUNCIAS DESTACADAS - Mejoras */
+.denuncias-destacadas {
+    background-color: #345676;
+    color: white;
+    padding: 50px 5%;
+    text-align: center;
 }
 
-/* FAQ - ACORDEÓN */
-.accordion-button {
+.denuncias-destacadas h2 {
+    font-size: 2.2rem; /* Reduje un poco el tamaño del título */
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.denuncia-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Ajusté el ancho mínimo */
+    gap: 20px; /* Reduje un poco el gap */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.denuncia {
+    background: #4A708B;
+    padding: 20px; /* Reduje un poco el padding */
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.denuncia:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.denuncia h4 {
+    font-size: 1.4rem; /* Reduje un poco el tamaño del título */
+    margin-bottom: 10px;
+    color: #e0f2f7;
+    font-weight: bold;
+}
+
+.denuncia p {
+    font-size: 1rem;
+    color: #f0f8ff;
+}
+
+/* ESTADÍSTICAS - Mejoras */
+.estadisticas {
+    display: flex;
+    justify-content: space-around;
+    background-color: #f8f8f8;
+    padding: 50px 5%;
+    text-align: center;
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan en pantallas pequeñas */
+    gap: 20px; /* Añadir un gap entre los elementos */
+}
+
+.estadistica {
+    flex-basis: calc(33.33% - 40px); /* Ajustar el ancho base y restar el gap */
+    padding: 20px;
+}
+
+.estadistica h3 {
+    font-size: 2.5rem; /* Reduje un poco el tamaño del número */
+    margin-bottom: 10px;
+    color: #2E8B57;
+    font-weight: bold;
+}
+
+.estadistica p {
+    font-size: 1.1rem;
+    color: #777;
+}
+
+
+/* PREGUNTAS FRECUENTES - Mejoras */
+.faq {
     background-color: #fff;
-    font-weight: 500;
-    transition: all 0.2s ease-in-out;
+    padding: 50px 5%;
 }
-.accordion-button:not(.collapsed) {
-    background-color: #dc3545;
-    color: #fff;
+
+.faq h2 {
+    font-size: 2.2rem; /* Reduje un poco el tamaño del título */
+    margin-bottom: 30px;
+    text-align: center;
+    color: #345676;
 }
-.accordion-body {
+
+.acordeon {
+    max-width: 95%; /* Permitir un mayor ancho en pantallas pequeñas */
+    margin: 0 auto;
+}
+
+.acordeon details {
     background-color: #f9f9f9;
-    border-radius: 0 0 12px 12px;
+    padding: 15px; /* Reduje un poco el padding */
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    transition: background-color 0.3s ease;
+}
+
+.acordeon details summary {
+    font-size: 1.2rem; /* Reduje un poco el tamaño del texto */
+    font-weight: bold;
+    cursor: pointer;
+    padding-bottom: 8px; /* Reduje un poco el padding inferior */
+    border-bottom: 1px solid #ddd;
+}
+
+.acordeon details p {
+    font-size: 1rem; /* Reduje un poco el tamaño del texto */
+    margin-top: 10px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.acordeon details[open] {
+    background-color: #e0f2f7;
+    border-color: #b0e0e6;
 }
 
 
-/* RESPONSIVE AJUSTES */
+/* TESTIMONIOS - Mejoras */
+.testimonios {
+    background-color: #345676;
+    color: white;
+    padding: 50px 5%;
+    text-align: center;
+}
+
+.testimonios h2 {
+    font-size: 2.2rem; /* Reduje un poco el tamaño del título */
+    margin-bottom: 30px;
+}
+
+.testimonio-lista {
+    max-width: 95%; /* Permitir un mayor ancho en pantallas pequeñas */
+    margin: 0 auto;
+}
+
+.testimonio-lista blockquote {
+    font-size: 1.4rem; /* Reduje un poco el tamaño del texto */
+    margin-bottom: 15px;
+    font-style: italic;
+    line-height: 1.7;
+    padding: 15px; /* Reduje un poco el padding */
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.testimonio-lista cite {
+    font-size: 1.1rem; /* Reduje un poco el tamaño del texto */
+    color: #D3C7BB;
+    display: block;
+    margin-top: 8px; /* Reduje un poco el margen superior */
+}
+
+/* CTA FINAL - Mejoras */
+.cta-final {
+    background-color: #151B23;
+    color: white;
+    text-align: center;
+    padding: 60px 5%; /* Reduje un poco el padding vertical */
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-final h2 {
+    font-size: 2.5rem; /* Reduje un poco el tamaño del título */
+    margin-bottom: 30px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.cta-final .btn-secundario {
+    background-color: #D3C7BB;
+    color: #151B23;
+    padding: 12px 30px; /* Reduje un poco el padding del botón */
+    font-size: 1.1rem; /* Reduje un poco el tamaño del texto del botón */
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cta-final .btn-secundario:hover {
+    background-color: #929292;
+    transform: translateY(-2px); /* Ligeramente menor elevación */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Opcional: Añadir un efecto de fondo sutil */
+.cta-final::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    z-index: 0;
+}
+
+.cta-final > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Media Queries para pantallas más pequeñas */
 @media (max-width: 768px) {
-    .banner-img,
-    .carousel-item img,
-    .mapa-ubicacion iframe {
-        max-height: 200px;
+    .hero {
+        flex-direction: column;
+        align-items: center; /* Centrar elementos en columna */
+        text-align: center; /* Centrar texto */
+        padding: 30px 5%; /* Reducir el padding */
+        min-height: auto; /* Ajustar altura automáticamente */
     }
 
-    .btn-danger.btn-lg {
+    .hero-texto {
+        padding-right: 0; /* Eliminar padding derecho */
+        margin-bottom: 30px; /* Espacio entre texto e imagen */
+    }
+
+    .hero-texto h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-texto p {
+        font-size: 1.1rem;
+    }
+
+    .hero-img {
+        display: block; /* Mostrar la imagen en pantallas pequeñas */
+        max-width: 80%; /* Reducir el ancho de la imagen */
+        margin: 0 auto; /* Centrar la imagen */
+    }
+
+    .ventaja-lista {
+        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+    }
+
+    .denuncia-grid {
+        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+    }
+
+    .estadisticas {
+        flex-direction: column; /* Una columna en pantallas pequeñas */
+        align-items: center; /* Centrar elementos */
+    }
+
+    .estadistica {
+        flex-basis: auto; /* Ancho automático */
+        width: 80%; /* Ocupar un ancho razonable */
+        margin-bottom: 20px;
+    }
+
+    .testimonios blockquote {
+        font-size: 1.3rem;
+    }
+
+    .cta-final h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Media Queries para pantallas aún más pequeñas (móviles) */
+@media (max-width: 480px) {
+    .hero-texto h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-texto p {
         font-size: 1rem;
-        padding: 0.6rem 1.5rem;
     }
 
-    .card-title {
+    .card h3 {
+        font-size: 1.6rem;
+    }
+
+    .denuncias-destacadas h2 {
+        font-size: 2rem;
+    }
+
+    .estadistica h3 {
+        font-size: 2rem;
+    }
+
+    .faq h2 {
+        font-size: 2rem;
+    }
+
+    .acordeon details summary {
+        font-size: 1.1rem;
+    }
+
+    .testimonios h2 {
+        font-size: 2rem;
+    }
+
+    .testimonios blockquote {
+        font-size: 1.2rem;
+    }
+
+    .cta-final h2 {
+        font-size: 1.8rem;
+    }
+
+    .cta-final .btn-secundario {
         font-size: 1rem;
-    }
-
-    .accordion-button {
-        font-size: 0.95rem;
+        padding: 10px 25px;
     }
 }

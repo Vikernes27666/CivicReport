@@ -21,7 +21,6 @@ $mostrarLoginModal = isset($_SESSION['error']) && !empty($_SESSION['error']);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../backend/css/inicio.css">
     <link rel="stylesheet" href="../backend/css/registro.css">
-    <link rel="stylesheet" href="../backend/css/principal.css">
 </head>
 
 <body>

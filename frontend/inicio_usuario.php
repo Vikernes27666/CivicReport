@@ -21,7 +21,7 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
     <link rel="stylesheet" href="../backend/css/inicio.css">
     <link rel="stylesheet" href="../backend/css/footer.css">
     <link rel="stylesheet" href="../backend/css/registrro.css">
-    <link rel="stylesheet" href="../backend/css/principal.css">
+
 
 </head>
 
