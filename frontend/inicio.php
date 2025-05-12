@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 session_unset();
 session_destroy();
@@ -38,7 +38,7 @@ $mostrarLoginModal = isset($_SESSION['error']) && !empty($_SESSION['error']);
         <?php unset($_SESSION['registro_exitoso']); ?>
     <?php endif; ?>
 
-    
+
 
     <!-- navbar.php -->
     <?php include 'templates/navbar.php'; ?>
@@ -196,10 +196,10 @@ $mostrarLoginModal = isset($_SESSION['error']) && !empty($_SESSION['error']);
     <!-- principal.php -->
     <?php include 'principal.php'; ?>
     <!-- principal.php -->
-    
-    <!-- navbar_usuario.php -->
+
+    <!-- footer -->
     <?php include 'templates/footer.php'; ?>
-    <!-- navbar_usuario.php -->
+    <!-- foter -->
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

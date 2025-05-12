@@ -8,22 +8,22 @@
             <img src="../backend/img/logo.png" alt="Inicio" class="logo">
         </a>
 
-        <!-- Botón Hamburguesa -->
+        <!-- Botón hamburguesa -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Contenido Colapsable -->
+        <!-- Menú desplegable -->
         <div class="collapse navbar-collapse justify-content-between" id="menuPrincipal">
 
-            <!-- Menú -->
+            <!-- Menú de enlaces -->
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <?php
                 $links = [
                     "Servicios" => [
                         "Registrar Denuncia" => $nombre_usuario ? "reg_denucnia.php" : "#",
                         "Ver Denuncias" => $nombre_usuario ? "ver_denuncia.php" : "#",
-                        "Consultar Estado" => $nombre_usuario ? "#" : "#",
+                        "Consultar Estado" => $nombre_usuario ? "seg_denuncia.php" : "#",
                         "Mapa del Crimen" => $nombre_usuario ? "mapa_denuncias.php" : "#",
                     ],
                     "Nosotros" => [
@@ -50,8 +50,8 @@
 
                 foreach ($links as $menu => $items) {
                     echo "<li class='nav-item dropdown'>
-                            <a class='nav-link dropdown-toggle' href='#' id='dropdown_$menu' role='button' data-bs-toggle='dropdown' aria-expanded='false'>$menu</a>
-                            <ul class='dropdown-menu' aria-labelledby='dropdown_$menu'>";
+                  <a class='nav-link dropdown-toggle' href='#' id='dropdown_$menu' role='button' data-bs-toggle='dropdown' aria-expanded='false'>$menu</a>
+                  <ul class='dropdown-menu' aria-labelledby='dropdown_$menu'>";
 
                     foreach ($items as $nombre => $url) {
                         $atributos = (!$nombre_usuario && $menu == "Servicios") ? "data-bs-toggle='modal' data-bs-target='#loginModal'" : "";
@@ -63,27 +63,38 @@
                 ?>
             </ul>
 
-            <!-- Buscador y sesión -->
-            <div class="d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center gap-2 ms-lg-3 mt-3 mt-lg-0 w-100 w-lg-auto">
-                <form class="d-flex w-100 w-lg-auto" role="search">
-                    <input class="form-control buscador" type="search" placeholder="Buscar..." aria-label="Buscar">
-                </form>
+            <!-- Botones de sesión -->
+            <div class="d-flex align-items-center gap-2 ms-lg-3 mt-3 mt-lg-0">
 
                 <?php if ($nombre_usuario): ?>
+                    <!-- Dropdown de usuario -->
                     <div class="dropdown">
-                        <button class="btn btn-outline-light dropdown-toggle w-100 w-lg-auto" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-user me-1"></i> <?= htmlspecialchars($nombre_usuario); ?>
+                        <button class="btn btn-outline-light d-flex align-items-center gap-2 px-3 py-2 rounded shadow-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle fs-5"></i>
+                            <span class="fw-semibold"><?= htmlspecialchars($nombre_usuario); ?></span>
+                            <i class="bi bi-caret-down-fill fs-6"></i>
                         </button>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="../backend/controlador/logout.php">Cerrar sesión</a></li>
+
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm mt-2">
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center gap-2 text-danger" href="../backend/controlador/logout.php">
+                                    <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 <?php else: ?>
-                    <div class="d-flex gap-2 flex-wrap">
-                        <button class="btn btn-outline-light w-100 w-lg-auto" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar Sesión</button>
-                        <button class="btn btn-light text-primary border w-100 w-lg-auto" data-bs-toggle="modal" data-bs-target="#registerModal">Registrarse</button>
+                    <!-- Botones de login y registro -->
+                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                        <button class="btn btn-outline-light px-4 py-2 d-flex align-items-center gap-2 fw-semibold shadow-sm" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
+                        </button>
+                        <button class="btn btn-primary px-4 py-2 d-flex align-items-center gap-2 fw-semibold shadow-sm" data-bs-toggle="modal" data-bs-target="#registerModal">
+                            <i class="bi bi-person-plus-fill"></i> Registrarse
+                        </button>
                     </div>
                 <?php endif; ?>
+
             </div>
         </div>
     </div>

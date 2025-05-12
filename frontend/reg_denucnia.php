@@ -19,10 +19,11 @@ include '../backend/bd/conexion.php';
     <title>Formulario de Denuncia</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../backend/css/inicio.css">
     <link rel="stylesheet" href="../backend/css/footer.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../backend/css/reg_denuncia.css">
+    <link rel="stylesheet" href="../backend/css/footer.css">
 </head>
 
 <body>
@@ -194,10 +195,12 @@ include '../backend/bd/conexion.php';
 
         </form>
     </div>
+    <div class=" mt-4 ">
+        <!-- footer -->
+        <?php include 'templates/footer.php'; ?>
+        <!-- foter -->
+    </div>
 
-    <!-- navbar_usuario.php -->
-    <?php include 'templates/footer.php'; ?>
-    <!-- navbar_usuario.php -->
 
     <script>
 

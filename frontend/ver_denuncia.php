@@ -10,14 +10,15 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 <?php
 include '../backend/bd/conexion.php';
 $sql = "SELECT d.id_denuncia, d.titulo, d.descripcion, d.categoria, d.fecha_hechos,
-               d.departamento, d.provincia, d.distrito, d.direccion_referencia, d.codigo_seguimiento,
-               d.es_anonimo, de.nombre AS nombre_denunciante, e.archivo_url
+        d.departamento, d.provincia, d.distrito, d.direccion_referencia, d.codigo_seguimiento,
+        d.es_anonimo, d.fecha_creacion, de.nombre AS nombre_denunciante, e.archivo_url
         FROM denuncias d
         LEFT JOIN evidencias e ON d.id_denuncia = e.id_denuncia
         LEFT JOIN denunciantes de ON d.id_denunciante = de.id_denunciante
         WHERE d.estado = 'Aprobada'
         GROUP BY d.id_denuncia
-        ORDER BY d.fecha_creacion DESC";
+        ORDER BY d.fecha_creacion DESC
+        ";
 
 $result = $conn->query($sql);
 ?>
