@@ -3,20 +3,16 @@
 <nav class="navbar navbar-expand-lg navbar-dark px-3 py-3" style="background-color: #0c364d;">
     <div class="container-fluid">
 
-        <!-- Logo -->
         <a class="navbar-brand d-lg-flex align-items-center" href="<?= $nombre_usuario ? 'inicio_usuario.php' : 'inicio.php' ?>">
             <img src="../backend/img/logo.png" alt="Inicio" class="logo">
         </a>
 
-        <!-- Botón hamburguesa -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Menú desplegable -->
         <div class="collapse navbar-collapse justify-content-between" id="menuPrincipal">
 
-            <!-- Menú de enlaces -->
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <?php
                 $links = [
@@ -67,7 +63,6 @@
             <div class="d-flex align-items-center gap-2 ms-lg-3 mt-3 mt-lg-0">
 
                 <?php if ($nombre_usuario): ?>
-                    <!-- Dropdown de usuario -->
                     <div class="dropdown">
                         <button class="btn btn-outline-light d-flex align-items-center gap-2 px-3 py-2 rounded shadow-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-person-circle fs-5"></i>
@@ -77,14 +72,13 @@
 
                         <ul class="dropdown-menu dropdown-menu-end shadow-sm mt-2">
                             <li>
-                                <a class="dropdown-item d-flex align-items-center gap-2 text-danger" href="../backend/controlador/logout.php">
+                                <a class="dropdown-item d-flex align-items-center gap-2 text-danger" href="/CivicReport/backend/controlador/logout.php">
                                     <i class="bi bi-box-arrow-right"></i> Cerrar sesión
                                 </a>
                             </li>
                         </ul>
                     </div>
                 <?php else: ?>
-                    <!-- Botones de login y registro -->
                     <div class="d-flex flex-wrap justify-content-center gap-2">
                         <button class="btn btn-outline-light px-4 py-2 d-flex align-items-center gap-2 fw-semibold shadow-sm" data-bs-toggle="modal" data-bs-target="#loginModal">
                             <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión

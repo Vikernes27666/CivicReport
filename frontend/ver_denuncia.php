@@ -166,9 +166,9 @@ $result = $conn->query($sql);
         </div>
     </div>
 
-    <!-- navbar_usuario.php -->
+    <!-- footer -->
     <?php include 'templates/footer.php'; ?>
-    <!-- navbar_usuario.php -->
+    <!-- foter -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

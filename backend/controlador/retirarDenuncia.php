@@ -5,7 +5,7 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_denuncia'])) {
     $id = intval($_POST['id_denuncia']);
 
-    $stmt = $conn->prepare("UPDATE denuncias SET estado = 'cancelado' WHERE id_denuncia = ?");
+    $stmt = $conn->prepare("UPDATE denuncias SET estado = 'cancelada' WHERE id_denuncia = ?");
     $stmt->bind_param("i", $id);
 
     if ($stmt->execute()) {

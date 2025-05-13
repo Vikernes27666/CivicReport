@@ -177,7 +177,7 @@
     <div class="acordeon">
       <details>
         <summary>¿Necesito registrarme para denunciar?</summary>
-        <p>No es necesario, pero si te registras puedes hacer seguimiento.</p>
+        <p>SI es necesario, pero si te registras puedes hacer tu denuncia anónima.</p>
       </details>
       <details>
         <summary>¿Qué pasa después de una denuncia?</summary>

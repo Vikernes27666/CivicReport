@@ -78,17 +78,26 @@ endif;
                 <p class="mb-1"><strong>Estado:</strong> <?= htmlspecialchars($row['estado']) ?></p>
                 <p class="mb-1"><strong>Fecha:</strong> <?= date("d/m/Y", strtotime($row['fecha_creacion'])) ?></p>
                 <p class="mb-0"><strong>ID Denuncia:</strong> <?= $row['id_denuncia'] ?></p>
+                <!-- Aquí agregamos un mensaje adicional si la denuncia está cancelada -->
+                <?php if (strtolower($row['estado']) == 'cancelada'): ?>
+                  <div class="alert alert-danger mt-2" role="alert">
+                    Esta denuncia fue cancelada.
+                  </div>
+                <?php endif; ?>
               </div>
               <div class="col-md-4 text-end">
-                <button
-                  class="btn btn-outline-primary me-2 mb-2"
-                  data-bs-toggle="modal"
-                  data-bs-target="#modalEstado"
-                  data-id="<?= $row['id_denuncia'] ?>"
-                  data-estado="<?= $row['estado'] ?>"
-                  data-fecha="<?= $row['fecha_creacion'] ?>">
-                  Consultar Estado
-                </button>
+                <!-- Si la denuncia está cancelada, no mostrar el botón "Consultar Estado" -->
+                <?php if (strtolower(trim($row['estado'])) !== 'cancelada'): ?>
+                  <button
+                    class="btn btn-outline-primary me-2 mb-2"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalEstado"
+                    data-id="<?= $row['id_denuncia'] ?>"
+                    data-estado="<?= $row['estado'] ?>"
+                    data-fecha="<?= $row['fecha_creacion'] ?>">
+                    Consultar Estado
+                  </button>
+                <?php endif; ?>
                 <?php if (strtolower(trim($row['estado'])) === 'pendiente'): ?>
                   <form action="../backend/controlador/retirarDenuncia.php" method="POST" onsubmit="return confirm('¿Estás seguro de retirar esta denuncia?')" style="display:inline;">
                     <input type="hidden" name="id_denuncia" value="<?= $row['id_denuncia'] ?>">
@@ -103,6 +112,7 @@ endif;
         <div class="alert alert-warning">No se encontraron denuncias con ese código.</div>
       <?php endif; ?>
     <?php endif; ?>
+
   </div>
 
   <!-- modal del proces0 -->
@@ -157,7 +167,7 @@ endif;
                     'pendiente' => 'warning',
                     'aprobada' => 'success',
                     'rechazada' => 'danger',
-                    'cancelado' => 'secondary',
+                    'cancelada' => 'secondary',
                     default => 'light'
                   };
                   ?>
