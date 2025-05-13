@@ -72,7 +72,7 @@
 
                         <ul class="dropdown-menu dropdown-menu-end shadow-sm mt-2">
                             <li>
-                                <a class="dropdown-item d-flex align-items-center gap-2 text-danger" href="/CivicReport/backend/controlador/logout.php">
+                                <a class="dropdown-item d-flex align-items-center gap-2 text-danger" href="../backend/controlador/logout.php">
                                     <i class="bi bi-box-arrow-right"></i> Cerrar sesión
                                 </a>
                             </li>
