@@ -1,6 +1,7 @@
 <?php
 session_start();
-session_destroy();  // Destruye todas las variables de sesión
-header('Location: ../../frontend/inicio.php');  // Redirige al formulario de login
+session_unset();
+session_destroy();
+header('Location: ../../frontend/inicio.php');
 exit();
 ?>
